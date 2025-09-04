@@ -1,0 +1,2 @@
+KEY_WEATHER_API_ACCESS_KEY = '46909f2677f445388af202601250409'.freeze
+KEY_WEATHER_API_BASE_URL = 'http://api.weatherapi.com/v1'.freeze
