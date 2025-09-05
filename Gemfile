@@ -18,6 +18,8 @@ gem "stimulus-rails"
 # gem "jbuilder"
 
 gem 'faraday'
+gem 'json'
+gem 'uri'
 gem 'geocoder'
 
 

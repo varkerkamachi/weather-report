@@ -401,6 +401,7 @@ DEPENDENCIES
   ffaker
   geocoder
   importmap-rails
+  json
   kamal
   parallel_tests
   propshaft
@@ -419,6 +420,7 @@ DEPENDENCIES
   thruster
   turbo-rails
   tzinfo-data
+  uri
   web-console
 
 BUNDLED WITH
