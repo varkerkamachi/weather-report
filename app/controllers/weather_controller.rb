@@ -10,10 +10,10 @@ class WeatherController < ApplicationController
     def show
         # @weather = Remote::ApiConnect::Request.get( 'forecast.json', params )
         # :location, :current, :forecast
-        @weather = GetWeatherInteractor.new('forecast.json', params).run
+        @location, @forecast, @current = GetWeatherInteractor.new('forecast.json', params).run
         respond_to do |format|
-            format.html
-            format.json { render json: @weather }
+            format.html { render :show }
+            format.json { render json: [@location, @forecast, @current] }
         end
 
     end

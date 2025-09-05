@@ -1,0 +1,10 @@
+
+<div id="wrapper">
+    <h2>My Weather <@= "for  #{@location['name']}" if @location.present? %>  </h2>
+    # <%= @location['region'] if @location.present? %>, <%= @location['country'] if @location.present? %></h2>
+    <p>Enter a zip code or address to see the current weather conditions.</p>
+    <form action="/weather" method="get">
+        <input type="text" name="location" placeholder="Zip code or address" required>
+        <button type="submit">Get Weather</button>
+    </form>
+</div>
