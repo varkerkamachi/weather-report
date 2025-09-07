@@ -24,6 +24,7 @@ gem 'geocoder'
 
 
 # -- better performance over jbuilder
+# -- opted not to use this for now, but leaving it in for future reference
 gem 'active_model_serializers', '~> 0.10.7'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
@@ -77,8 +78,4 @@ group :test do
   gem 'rspec-rails'
   gem 'rspec-mocks'
   gem 'factory_bot_rails'
-  gem 'database_cleaner'
-  gem 'parallel_tests'
-  gem "capybara"
-  gem "selenium-webdriver"
 end
