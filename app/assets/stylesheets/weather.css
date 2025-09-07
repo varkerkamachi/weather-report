@@ -1,0 +1,140 @@
+.row.current-conditions {
+    margin-top: 2rem;
+}
+
+.weather_icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 0.5rem;
+    margin-top: -0.15rem
+}
+
+.temp--conditions {
+    border-radius: 4rem;
+    border: 1px solid #dee2e6;
+    padding: 0.25rem 1rem 0.25rem 1rem;
+    display: inline-flex;
+    overflow: hidden;
+    align-items: center;
+}
+
+.temperature {
+    font-size: 3rem;
+    font-weight: 300;
+    color: ##212129;
+}
+
+.temperature sup {
+    font-size: 1.5rem;
+    opacity: 0.85;
+    margin-left: -0.5rem;
+}
+
+.subtext {
+    font-weight: 200;
+    color: #6c757d;
+}
+.current-conditions {
+    margin: 0 0 0.75rem;
+}
+
+.conditions-text {
+    font-size: 0.85rem;
+    margin: 0;
+    font-weight: 200;
+    text-align: center;
+}
+
+.temp--conditions > .col {
+    right: 0.5rem;
+    top: 25%;
+    text-align: center;
+    margin: 0.5rem 1rem;
+}
+
+.temp--conditions .flex--flex-col {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.heading.conditions {
+    margin-bottom: 0;
+}
+
+.day--conditions {
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    padding: 0.25rem 1rem;
+    text-align: left;
+    min-width: 7rem;
+    max-width: 10rem;
+}
+
+.day--conditions .conditions-text {
+    text-align: left;
+    padding-left: 2.5rem;
+    font-size: 0.75rem;
+    line-height: 2rem;
+}
+
+.day--conditions .conditions-text img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.day--conditions .temps {
+    font-size: 0.85rem
+}
+
+.day--conditions .temps:nth-child(1) {
+    margin-bottom: 0.5rem;
+}
+
+.day--conditions .temps:nth-last-child {
+    margin: 0;
+}
+
+/*--
+    form styles
+--*/
+form input[type="text"] {
+    min-width: 12rem;
+    padding: 0.75rem 0.5rem;
+    font-size: 1rem;
+    z-index: 1;
+    /* line-height: 1.5; */
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 2rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+form input[type="text"]:focus {
+    border-color: #3579ac;
+    outline: 0;
+}
+
+form button {
+    height: 2.75rem;
+    width: 4.5rem;
+    z-index: 0;
+    position: relative;
+    top: -1px;
+    left: -2.25rem;
+    border-radius: 0 3rem 3rem 0;
+    text-align: right;
+    font-weight: 400;
+    background-color: #3579ac;
+    color: #ced4da;
+    text-shadow: 0 -1px 0 rgba(0, 125, 245, 0.25);
+    border: none;
+}
+
+form button:hover {
+    background-color: #285e8e;
+    cursor: pointer;
+    color: white;
+}
