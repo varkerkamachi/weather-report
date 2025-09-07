@@ -8,10 +8,10 @@ RSpec.describe WeatherController, type: :routing do
         end
     end
 
-    describe 'get /weather' do
-        it 'routes to weather#show' do
-            expect(get('/weather')).to route_to(controller: "weather",
-                                        action: "show")
+    describe 'post /weather/search' do
+        it 'routes to weather#search' do
+            expect(post('/weather/search')).to route_to(controller: "weather",
+                                        action: "search")
         end
     end
 end

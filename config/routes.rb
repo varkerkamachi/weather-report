@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
 
   get "/", to: "weather#index"
-  get "/weather", to: "weather#show"
+  post "/weather/search", to: "weather#search", as: "search_weather"
 
 
   # Defines the root path route ("/")
