@@ -9,9 +9,9 @@ RSpec.describe WeatherController, type: :controller do
 
     end
 
-    describe "GET /weather" do
+    describe "POST /weather/search" do
         it "returns http success" do
-            get :show, params: { q: 'New York', days: 3, aqi: 'no' }
+            post :search, params: { q: 'New York', days: 3, aqi: 'no' }
             expect(response.status).to eq 200
         end
 

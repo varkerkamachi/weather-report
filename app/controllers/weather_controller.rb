@@ -1,37 +1,58 @@
 class WeatherController < ApplicationController
 
-
     def index
+        # @location = {my_index_loc: "Idx here, where I am!"}
+
         respond_to do |format|
             format.html
         end
+
     end
 
-    def show
-        # @weather = Remote::ApiConnect::Request.get( 'forecast.json', params )
-        # :location, :current, :forecast
-        @location, @forecast, @current = GetWeatherInteractor.new('forecast.json', params).run
-        respond_to do |format|
-            format.html { render :show }
-            format.json { render json: [@location, @forecast, @current] }
+    def search
+        # -- hard-coding these for now, ordinarily they'd be passed in from the form
+        params = model_params.merge!({
+            aqi: 'yes',
+            days: 5
+        })
+        @forecast, @current, @location, @errors  =  GetWeatherInteractor.new('forecast.json', params).run
+        # Rails.logger.info "params: #{params.inspect} ----------------"
+
+        if @errors.present?
+            respond_to do |format|
+                format.turbo_stream { 
+                                    render turbo_stream: turbo_stream.replace(
+                                                            "location_errors", 
+                                                            partial: "error_messages", 
+                                                            locals: { 
+                                                                errors: @errors
+                                                                } 
+                                                                        )  
+                                                                                }
+            end
+
+        else
+            respond_to do |format|
+                format.turbo_stream { 
+                                    render turbo_stream: turbo_stream.replace(
+                                                            "location_info", 
+                                                            partial: "location", 
+                                                            locals: { 
+                                                                location: @location,
+                                                                forecast: @forecast,
+                                                                current: @current
+                                                                } 
+                                                                        )  
+                                                                                }
+            end
+
         end
-
     end
 
-    # def current
-    #     location = params[:location]
-    #     if location.present?
-    #         # Here you would typically call a weather API to get the current weather for the given location.
-    #         # For demonstration purposes, we'll just return a placeholder response.
-    #         @weather_info = "The current weather at #{location} is Sunny, 75°F."
-    #     else
-    #         @weather_info = "Please provide a valid location."
-    #     end
-    #     render :index
-    # end 
+
 
     private
-
+    # -- whitelisting params for security/safety
     def model_params
         params.permit(:q, :days, :aqi, :key)
     end
