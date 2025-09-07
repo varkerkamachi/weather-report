@@ -14,10 +14,13 @@ class GetWeatherInteractor
 
     # this calls my API connection/request class/service,
     def run
-        @weather_data = Remote::ApiConnect::Request.get( @api_path, @params )
+        @weather_data = Rails.cache.fetch(@params[:q], expires_in: 30.minutes) do
+                            Remote::ApiConnect::Request.get( @api_path, @params )
+                        end
         persist!
 
-        [@forecast, @current, @location ]
+        [@forecast, @current, @location, @errors ]
+        
     end
 
     def success?
@@ -27,18 +30,18 @@ class GetWeatherInteractor
     # this handles some of the data processing/business logic
     # could be extended to save to a local DB, etc.
     def persist!
+
         @success = @weather_data.present? && @weather_data['error'].blank?
         if @success
-            Rails.logger.info "GetWeatherInteractor: weather_data: #{weather_data.inspect} ----------------"
-        
             @forecast = @weather_data['forecast']
             @current = @weather_data['current']
             @location = @weather_data['location']
+            @errors = nil
         else
-            Rails.logger.error "GetWeatherInteractor: Error fetching weather data: #{weather_data['error']['message'] if weather_data.present? && weather_data['error'].present?}"  
             @forecast = nil
             @current = nil
             @location = nil
+            @errors = @weather_data['error'] 
         end
     end
 
