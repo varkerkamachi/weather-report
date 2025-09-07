@@ -1,0 +1,17 @@
+ <div class="flex--flex-col forecast_weather pl0">
+    <h4 class="subtext heading"><%= display_forecast_duration_text(forecast_duration) %></h4>
+    <div class="flex--flex-row forecast_conditions">
+        <% @forecast['forecastday'].each do |day| %>
+            <div class="day--conditions rel">
+                <p class="date"><b><%= Date.parse(day['date']).strftime("%a., %b. %d") %></b></p>
+                
+                <p class="conditions-text rel">
+                    <img class="icon weather_icon" src="<%= day['day']['condition']['icon'] %>" alt="Weather icon showing <%= day['day']['condition']['text'] %> weather">
+                    <%= day['day']['condition']['text'] %>
+                </p>
+                <p class="temps temp-high">High: <%= day['day']['maxtemp_f'] %> <sup>°F</sup></p>
+                <p class="temps temp-low">Low: <%= day['day']['mintemp_f'] %> <sup>°F</sup></p>
+            </div>
+        <% end %>
+    </div>
+</div>

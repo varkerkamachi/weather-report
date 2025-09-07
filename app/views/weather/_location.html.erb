@@ -1,0 +1,29 @@
+<% if @location.present? %>
+
+    <h3 class="conditions heading">
+        Current weather conditions for <br />
+        <%= @location['name'] %>, <%= @location['region'] %>, <%= @location['country'] %>
+    </h3>
+
+    <% if @current.present? %>
+        <p class="current-conditions subtext ">
+            <b>Last updated: </b>
+            <%= calculate_elapsed_time_since_last_weather_update(
+                @current['last_updated_epoch'], 
+                @location['localtime_epoch']) %>
+        </p>
+    
+        <div class="flex--flex-col pl0">
+            <%= render partial: "current", locals: { current: @current } %>
+
+            <% if @forecast.present? %>
+                <%= render partial: "extended_forecast", locals: { forecast: @forecast, forecast_duration: @forecast['forecastday'].length } %>
+            <% end %>
+           
+        </div>
+    <% else %>
+        <p class="no-data subtext">No current weather data available</p>
+    <% end %>
+
+    
+<% end %>

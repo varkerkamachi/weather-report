@@ -2,8 +2,13 @@
 <div id="wrapper">
     <h2>Get the latest weather</h2>
     <p>Enter a zip code or address to see the current weather conditions.</p>
-    <form action="/weather" method="get">
-        <input type="text" name="location" placeholder="Zip code or address" required>
-        <button type="submit">Get Weather</button>
+    <form action="/weather/search" method="post" data: { turbo_frame: "location" } >
+        <input type="text" name="q" placeholder="Zip code or address" required class="rel" />
+        <button type="submit">Go ></button>
     </form>
+    
+    <%= turbo_frame_tag "error_messages" %>
+    <p>&nbsp;</p>
+    <%= turbo_frame_tag "location_info" %>
+
 </div>

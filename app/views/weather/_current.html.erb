@@ -1,0 +1,15 @@
+<div class="flex--flex-col current_weather">
+    
+    <div class="row current_conditions">
+        <div class="temp--conditions flex--flex-row rel">
+            <span class="temperature flex--flex-col"><%= current['temp_f'] %> <sup>°F</sup></span>
+            
+            <!-- main conditions we can display contextually with the temperature for easy usability -->
+            <div class="flex--flex-col col">
+                <p class="conditions-text"><%= current['condition']['text'] %></p>
+                <img class="icon weather_icon" src="<%= current['condition']['icon'] %>" alt="Weather icon showing #{<%= current['condition']['text'] %>} weather">
+            </div>
+
+        </div>
+    </div>
+</div>

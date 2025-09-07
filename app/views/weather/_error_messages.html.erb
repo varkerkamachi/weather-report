@@ -1,0 +1,7 @@
+<% if @errors.present? %>
+    <div class="error-messages">
+        <h4 class="error-heading">Error fetching weather data:</h4>
+        <p class="error-text"><%= @errors['message'] %></p>
+    </div>
+
+<% end %>
